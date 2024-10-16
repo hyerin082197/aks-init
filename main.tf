@@ -9,6 +9,20 @@ resource "azurerm_resource_group" "rg" {
   location = var.resource_group_location
 }
 
+resource "azurerm_virtual_network" "aks_vnet" {
+  name                = var.aks_vnet_name
+  address_space       = ["10.28.0.0/16"]
+  location            = var.resource_group_location
+  resource_group_name = var.network_resource_group_name
+}
+
+resource "azurerm_subnet" "aks_subnet" {
+  name                 = var.aks_subnet_name
+  resource_group_name  = var.network_resource_group_name
+  virtual_network_name = azurerm_virtual_network.aks_vnet.name
+  address_prefixes     = ["10.28.0.0/24"]
+}
+
 
 resource "random_pet" "azurerm_kubernetes_cluster_dns_prefix" {
   prefix = "tiu-axcoe-hr-dns"  # DNS prefix를 tiu-axcoe-hr로 설정
