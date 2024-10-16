@@ -1,8 +1,3 @@
-data "azurerm_subnet" "aks_target_subnet" {
-  name                 = var.aks_subnet_name
-  virtual_network_name = var.aks_vnet_name
-  resource_group_name  = var.network_resource_group_name
-}
 
 resource "azurerm_resource_group" "rg" {
   name     = var.aks_resource_group_name
