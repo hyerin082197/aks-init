@@ -1,0 +1,36 @@
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform crash log
+crash.log
+
+# Ignore backup files
+*.backup
+*.tfvars.lock
+
+# Ignore plan output files
+*.tfplan
+
+# Ignore .tfvars files
+*.tfvars
+
+# .terraform directory
+.terraform/
+.terraform.lock.hcl
+
+# Log files
+*.log
+
+# Ignore MacOS specific files
+.DS_Store
+
+# Ignore editor specific files
+.idea/
+*.swp
+*.swo
+*.bak
+
+# kube config
+.kubeconfig
+.terraform/
