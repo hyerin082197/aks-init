@@ -9,13 +9,13 @@ resource "azurerm_virtual_network" "aks_vnet" {
   name                = var.aks_vnet_name
   address_space       = ["10.28.0.0/16"]
   location            = var.resource_group_location
-  resource_group_name = var.network_resource_group_name
+  resource_group_name = var.aks_resource_group_name
 }
 
 # 서브넷 생성
 resource "azurerm_subnet" "aks_subnet" {
   name                 = var.aks_subnet_name
-  resource_group_name  = var.network_resource_group_name
+  resource_group_name = var.aks_resource_group_name
   virtual_network_name = azurerm_virtual_network.aks_vnet.name
   address_prefixes     = ["10.28.0.0/24"]
 }
@@ -37,6 +37,14 @@ resource "azurerm_kubernetes_cluster" "k8s_cluster" {
   identity {
     type = "SystemAssigned"
   }
+
+  resource "azurerm_public_ip" "aks_public_ip" {
+  name                = "${var.aks_resource_group_name}-public-ip"
+  location            = var.resource_group_location
+  resource_group_name = var.aks_resource_group_name
+  allocation_method   = "Dynamic"
+  sku                 = "Standard"
+}
 
   default_node_pool {
     name                 = "default"

@@ -20,7 +20,7 @@ variable "aks_resource_group_name" {
 
 variable "aks_node_resource_group_name" {
   type        = string
-  default     = "tiu-axcoe-hr-aks-nodes-rg"
+  default     = "tiu-axcoe-hr-aks-mc-rg"
 }
 
 variable "aks_cluster_name" {
