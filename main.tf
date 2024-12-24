@@ -28,7 +28,7 @@ resource "azurerm_public_ip" "aks_public_ip" {
   name                = "${var.aks_resource_group_name}-public-ip"
   location            = var.resource_group_location
   resource_group_name = var.aks_resource_group_name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
   sku                 = "Standard"
 }
 
@@ -64,6 +64,7 @@ resource "azurerm_kubernetes_cluster" "k8s_cluster" {
   # Cilium 기반 Azure CNI 활성화
   network_profile {
     network_plugin      = "azure"
+    network_plugin_mode = "overlay"
     network_data_plane   = "cilium"
     load_balancer_sku   = "standard"
     pod_cidr            = var.aks_pod_cidr 
