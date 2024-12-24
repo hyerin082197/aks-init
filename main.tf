@@ -48,7 +48,7 @@ resource "azurerm_kubernetes_cluster" "k8s_cluster" {
   default_node_pool {
     name                 = "default"
     vm_size              = "Standard_DS2_v2"
-    vnet_subnet_id       = azurerm_subnet.aks_subnet.id  # 직접 생성한 서브넷을 참조
+    vnet_subnet_id       = azurerm_subnet.aks_subnet.id
     node_count           = var.default_node_count
     orchestrator_version = "1.29.7"
   }
@@ -61,11 +61,14 @@ resource "azurerm_kubernetes_cluster" "k8s_cluster" {
     }
   }
 
+  # Cilium 기반 Azure CNI 활성화
   network_profile {
-    network_plugin    = "kubenet"
-    load_balancer_sku = "standard"
-    pod_cidr          = var.aks_pod_cidr
-    service_cidr      = var.aks_service_cidr
-    dns_service_ip    = var.aks_dns_service_ip
+    network_plugin      = "azure"
+    network_data_plane   = "cilium"
+    load_balancer_sku   = "standard"
+    pod_cidr            = var.aks_pod_cidr 
+    service_cidr        = var.aks_service_cidr
+    dns_service_ip      = var.aks_dns_service_ip
   }
 }
+

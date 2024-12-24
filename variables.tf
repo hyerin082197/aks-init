@@ -60,17 +60,17 @@ variable "aks_subnet_nsg_name" {
 
 variable "aks_pod_cidr" {
   type = string
-  default = "172.22.0.0/16"
+  default = "10.28.1.0/24"
 }
 
 variable "aks_service_cidr" {
   type = string
-  default = "192.168.132.0/24"
+  default = "10.28.2.0/24"
 }
 
 variable "aks_dns_service_ip" {
   type = string
-  default = "192.168.132.10"
+  default = "10.28.2.10"
 }
 
 variable "default_node_count" {
@@ -83,12 +83,12 @@ variable "devops_node_count" {
   default     = 1
 }
 
-variable "sre_node_count" {
-  type        = number
-  default     = 0
-}
-
 variable "username" {
   type        = string
   default     = "azureadmin"
+}
+
+variable "network_dataplane" {
+  type    = string
+  default = "cilium"
 }
