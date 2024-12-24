@@ -24,13 +24,15 @@ resource "azurerm_subnet" "aks_subnet" {
 resource "random_pet" "azurerm_kubernetes_cluster_dns_prefix" {
   prefix = "tiu-axcoe-hr-dns"  # DNS prefix를 tiu-axcoe-hr로 설정
 }
+
 resource "azurerm_public_ip" "aks_public_ip" {
-  name                = "${var.aks_resource_group_name}-public-ip"
-  location            = var.resource_group_location
-  resource_group_name = var.aks_resource_group_name
-  allocation_method   = "Static"
+  name                = "${azurerm_resource_group.rg.name}-public-ip"
+  location            = azurerm_resource_group.rg.location           
+  resource_group_name = azurerm_resource_group.rg.name               
+  allocation_method   = "Static"                                     
   sku                 = "Standard"
 }
+
 
 # AKS 클러스터 생성
 resource "azurerm_kubernetes_cluster" "k8s_cluster" {
