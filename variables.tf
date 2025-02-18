@@ -35,12 +35,12 @@ variable "common_resource_group_name" {
 
 variable "common_base_acr_name" {
   type        = string
-  default     = "tiuaxcoebasecr"
+  default     = "acrcommvpbase"
 }
 
 variable "common_app_acr_name" {
   type        = string
-  default     = "tiuaxcoeappcr"
+  default     = "acrcommvpapp01"
 }
 
 variable "aks_vnet_name" {
