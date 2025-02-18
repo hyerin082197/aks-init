@@ -22,7 +22,7 @@ resource "azurerm_subnet" "aks_subnet" {
 
 # DNS prefix 생성
 resource "random_pet" "azurerm_kubernetes_cluster_dns_prefix" {
-  prefix = "tiu-axcoe-hr-dns"  # DNS prefix를 tiu-axcoe-hr로 설정
+  prefix = "ccoe-hr-dns"  # DNS prefix를 ccoe-hr로 설정
 }
 
 resource "azurerm_public_ip" "aks_public_ip" {

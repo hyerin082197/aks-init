@@ -5,32 +5,32 @@ variable "resource_group_location" {
 
 variable "prefix" {
   type = string
-  default = "tiu-axcoe-hr"
+  default = "ccoe-hr"
 }
 
 variable "network_resource_group_name" {
   type        = string
-  default     = "tiu-axcoe-hr-net-rg"
+  default     = "ccoe-hr-net-rg"
 }
 
 variable "aks_resource_group_name" {
   type        = string
-  default     = "tiu-axcoe-hr-aks-rg"
+  default     = "ccoe-hr-aks-rg"
 }
 
 variable "aks_node_resource_group_name" {
   type        = string
-  default     = "tiu-axcoe-hr-aks-mc-rg"
+  default     = "ccoe-hr-aks-mc-rg"
 }
 
 variable "aks_cluster_name" {
   type        = string
-  default     = "tiu-axcoe-hr-aks"
+  default     = "ccoe-hr-aks"
 }
 
 variable "common_resource_group_name" {
   type        = string
-  default     = "tiu-axcoe-hr-com-rg"
+  default     = "ccoe-hr-com-rg"
 }
 
 variable "common_base_acr_name" {
@@ -45,17 +45,17 @@ variable "common_app_acr_name" {
 
 variable "aks_vnet_name" {
   type = string
-  default = "tiu-axcoe-hr-vnet"
+  default = "ccoe-hr-vnet"
 }
 
 variable "aks_subnet_name" {
   type = string
-  default = "tiu-axcoe-hr-aks-snet"
+  default = "ccoe-hr-aks-snet"
 }
 
 variable "aks_subnet_nsg_name" {
   type = string
-  default = "tiu-axcoe-hr-nsg"
+  default = "ccoe-hr-nsg"
 }
 
 variable "aks_pod_cidr" {
